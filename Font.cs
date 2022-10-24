@@ -12,6 +12,19 @@ using System.Threading.Tasks;
 
 namespace FontInstaller
 {
+    [Serializable]
+    class FontAlreadyExistsException : Exception
+    {
+        public FontAlreadyExistsException() { }
+
+        public FontAlreadyExistsException(string fontName)
+            : base(String.Format("Font already exists: {0}", fontName))
+        {
+
+        }
+    }
+
+
     internal class Font
     {
         public const string RegistryPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts";
@@ -32,7 +45,9 @@ namespace FontInstaller
             string currentDir = Directory.GetCurrentDirectory();
 
             if (File.Exists(fontDestination))
-                return;
+            {
+                throw new FontAlreadyExistsException(fontDestination);
+            }
 
             File.Copy(Path.Combine(currentDir, fontPath), fontDestination);
 

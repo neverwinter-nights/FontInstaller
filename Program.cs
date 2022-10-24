@@ -20,10 +20,12 @@ namespace FontInstaller
         static ConsoleColor ConsoleNormalColour = Console.ForegroundColor;
         static ConsoleColor ConsoleErrorColour = ConsoleColor.Red;
 
+
         static void ResetConsoleColour()
         {
             Console.ForegroundColor = ConsoleNormalColour;
         }
+
 
         static void LogMessage(string Message)
         {
