@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FontInstaller
 {
-    enum ExitCode : int
-    {
-        Success = 0,
-        FontFileIsNotSpecified = 1,
-        FontFileDoesNotExist = 2,
-        FontInstallationError = 3
-    }
-
     internal class Program
     {
         static ConsoleColor ConsoleNormalColour = Console.ForegroundColor;
