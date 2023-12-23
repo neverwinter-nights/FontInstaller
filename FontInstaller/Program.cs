@@ -28,6 +28,16 @@ namespace FontInstaller
             Console.WriteLine(Error);
         }
 
+        static void WaitForEnter()
+        {
+            // While this application runs in the Administrator mode,
+            // it opens a separate console for output. To show the output
+            // of this separate console to the user we need to "pause" this
+            // separate console.
+            Console.WriteLine("Press ENTER to exit ...");
+            Console.ReadKey();
+        }
+
 
         static int Main(string[] args)
         {
@@ -35,6 +45,7 @@ namespace FontInstaller
             {
                 LogError("Font file is not specified.");
                 ResetConsoleColour();
+                WaitForEnter();
 
                 return (int)ExitCode.FontFileIsNotSpecified;
             }
@@ -45,6 +56,7 @@ namespace FontInstaller
             {
                 LogError("Font file does not exist.");
                 ResetConsoleColour();
+                WaitForEnter();
 
                 return (int)ExitCode.FontFileDoesNotExist;
             }
@@ -59,6 +71,7 @@ namespace FontInstaller
                 LogError(e.ToString());
                 LogMessage("Make sure that you know what you are doing.");
                 ResetConsoleColour();
+                WaitForEnter();
 
                 return (int)ExitCode.FontInstallationError;
             }
